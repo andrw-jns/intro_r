@@ -4,7 +4,6 @@
     <title>Data wrangling with dplyr</title>
     <meta charset="utf-8" />
     <meta name="author" content="Zoë Turner" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
     <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
@@ -400,20 +399,23 @@ defaults to ascending order
 ```r
 beds_data %&gt;% 
   arrange(beds_av)
-#&gt; # A tibble: 4,558 x 5
-#&gt;    date       org_code org_name          beds_av occ_av
-#&gt;    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 2018-09-01 RAL      Royal Free London       2      2
-#&gt;  2 2018-06-01 RAL      Royal Free London       4      4
-#&gt;  3 2015-09-01 RAL      Royal Free London       5      2
-#&gt;  4 2013-09-01 RAL      Royal Free London       6      1
-#&gt;  5 2013-12-01 RAL      Royal Free London       6      3
-#&gt;  6 2014-03-01 RAL      Royal Free London       6      2
-#&gt;  7 2014-06-01 RAL      Royal Free London       6      3
-#&gt;  8 2014-09-01 RAL      Royal Free London       6      2
-#&gt;  9 2014-12-01 RAL      Royal Free London       6      2
-#&gt; 10 2015-03-01 RAL      Royal Free London       6      3
-#&gt; # ... with 4,548 more rows
+```
+
+```
+## # A tibble: 4,558 x 5
+##    date       org_code org_name          beds_av occ_av
+##    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt;
+##  1 2018-09-01 RAL      Royal Free London       2      2
+##  2 2018-06-01 RAL      Royal Free London       4      4
+##  3 2015-09-01 RAL      Royal Free London       5      2
+##  4 2013-09-01 RAL      Royal Free London       6      1
+##  5 2013-12-01 RAL      Royal Free London       6      3
+##  6 2014-03-01 RAL      Royal Free London       6      2
+##  7 2014-06-01 RAL      Royal Free London       6      3
+##  8 2014-09-01 RAL      Royal Free London       6      2
+##  9 2014-12-01 RAL      Royal Free London       6      2
+## 10 2015-03-01 RAL      Royal Free London       6      3
+## # … with 4,548 more rows
 ```
 
 ---
@@ -424,23 +426,25 @@ We need descending order:
 
 
 ```r
-
 beds_data %&gt;% 
 * arrange(desc(beds_av))
-#&gt; # A tibble: 4,558 x 5
-#&gt;    date       org_code org_name                   beds_av occ_av
-#&gt;    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;                        &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 2013-09-01 RHA      Nottinghamshire Healthcare    1050    929
-#&gt;  2 2013-12-01 RHA      Nottinghamshire Healthcare    1002    888
-#&gt;  3 2014-03-01 RHA      Nottinghamshire Healthcare     993    875
-#&gt;  4 2014-06-01 RHA      Nottinghamshire Healthcare     991    857
-#&gt;  5 2015-03-01 RHA      Nottinghamshire Healthcare     977    821
-#&gt;  6 2014-09-01 RHA      Nottinghamshire Healthcare     971    844
-#&gt;  7 2014-12-01 RHA      Nottinghamshire Healthcare     939    829
-#&gt;  8 2015-12-01 RWK      East London                    925    757
-#&gt;  9 2015-09-01 RWK      East London                    919    762
-#&gt; 10 2016-09-01 RWK      East London                    916    770
-#&gt; # ... with 4,548 more rows
+```
+
+```
+## # A tibble: 4,558 x 5
+##    date       org_code org_name                   beds_av occ_av
+##    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;                        &lt;dbl&gt;  &lt;dbl&gt;
+##  1 2013-09-01 RHA      Nottinghamshire Healthcare    1050    929
+##  2 2013-12-01 RHA      Nottinghamshire Healthcare    1002    888
+##  3 2014-03-01 RHA      Nottinghamshire Healthcare     993    875
+##  4 2014-06-01 RHA      Nottinghamshire Healthcare     991    857
+##  5 2015-03-01 RHA      Nottinghamshire Healthcare     977    821
+##  6 2014-09-01 RHA      Nottinghamshire Healthcare     971    844
+##  7 2014-12-01 RHA      Nottinghamshire Healthcare     939    829
+##  8 2015-12-01 RWK      East London                    925    757
+##  9 2015-09-01 RWK      East London                    919    762
+## 10 2016-09-01 RWK      East London                    916    770
+## # … with 4,548 more rows
 ```
 
 &lt;/br&gt; desc() works for text and numeric variables
@@ -617,10 +621,10 @@ The result is NA
 
 
 ```
-#&gt; # A tibble: 1 x 1
-#&gt;   means_beds
-#&gt;        &lt;dbl&gt;
-#&gt; 1         NA
+## # A tibble: 1 x 1
+##   means_beds
+##        &lt;dbl&gt;
+## 1         NA
 ```
 
 ---
@@ -649,10 +653,13 @@ collapse many values into a single summary value
 beds_data %&gt;% 
   summarise(means_beds = mean(beds_av,
 *           na.rm = TRUE))
-#&gt; # A tibble: 1 x 1
-#&gt;   means_beds
-#&gt;        &lt;dbl&gt;
-#&gt; 1       300.
+```
+
+```
+## # A tibble: 1 x 1
+##   means_beds
+##        &lt;dbl&gt;
+## 1       300.
 ```
 
 This code produces a single summary value for the whole dataset
@@ -711,20 +718,23 @@ beds_data %&gt;%
 * group_by(date) %&gt;%
   summarise(mean_beds = mean(beds_av, 
             na.rm = TRUE))
-#&gt; # A tibble: 21 x 2
-#&gt;    date       mean_beds
-#&gt;    &lt;date&gt;         &lt;dbl&gt;
-#&gt;  1 2013-09-01      324.
-#&gt;  2 2013-12-01      322.
-#&gt;  3 2014-03-01      319.
-#&gt;  4 2014-06-01      320.
-#&gt;  5 2014-09-01      318.
-#&gt;  6 2014-12-01      315.
-#&gt;  7 2015-03-01      314.
-#&gt;  8 2015-06-01      294.
-#&gt;  9 2015-09-01      296.
-#&gt; 10 2015-12-01      296.
-#&gt; # ... with 11 more rows
+```
+
+```
+## # A tibble: 21 x 2
+##    date       mean_beds
+##    &lt;date&gt;         &lt;dbl&gt;
+##  1 2013-09-01      324.
+##  2 2013-12-01      322.
+##  3 2014-03-01      319.
+##  4 2014-06-01      320.
+##  5 2014-09-01      318.
+##  6 2014-12-01      315.
+##  7 2015-03-01      314.
+##  8 2015-06-01      294.
+##  9 2015-09-01      296.
+## 10 2015-12-01      296.
+## # … with 11 more rows
 ```
 
 ---
@@ -854,20 +864,23 @@ beds_data %&gt;%
   group_by(org_name) %&gt;% 
   summarise(mean_pocc = mean(perc_occ, na.rm = TRUE)) %&gt;% 
   arrange(desc(mean_pocc))
-#&gt; # A tibble: 255 x 2
-#&gt;    org_name                                       mean_pocc
-#&gt;    &lt;chr&gt;                                              &lt;dbl&gt;
-#&gt;  1 Barnet, Enfield And Haringey Mental Health         0.982
-#&gt;  2 Bradford District Care Trust                       0.972
-#&gt;  3 Camden And Islington                               0.953
-#&gt;  4 Hertfordshire Partnership University               0.953
-#&gt;  5 North Essex Partnership University                 0.945
-#&gt;  6 Devon Partnership                                  0.945
-#&gt;  7 Sussex Partnership                                 0.942
-#&gt;  8 Essex Partnership University                       0.942
-#&gt;  9 Manchester Mental Health And Social Care Trust     0.940
-#&gt; 10 Birmingham And Solihull Mental Health              0.935
-#&gt; # ... with 245 more rows
+```
+
+```
+## # A tibble: 255 x 2
+##    org_name                                       mean_pocc
+##    &lt;chr&gt;                                              &lt;dbl&gt;
+##  1 Barnet, Enfield And Haringey Mental Health         0.982
+##  2 Bradford District Care Trust                       0.972
+##  3 Camden And Islington                               0.953
+##  4 Hertfordshire Partnership University               0.953
+##  5 North Essex Partnership University                 0.945
+##  6 Devon Partnership                                  0.945
+##  7 Sussex Partnership                                 0.942
+##  8 Essex Partnership University                       0.942
+##  9 Manchester Mental Health And Social Care Trust     0.940
+## 10 Birmingham And Solihull Mental Health              0.935
+## # … with 245 more rows
 ```
 
 ---
@@ -885,20 +898,23 @@ beds_data %&gt;%
             # Number of data points/rows by group
 *           number = n()) %&gt;%
   arrange(desc(mean_pocc))
-#&gt; # A tibble: 255 x 3
-#&gt;    org_name                                       mean_pocc number
-#&gt;    &lt;chr&gt;                                              &lt;dbl&gt;  &lt;int&gt;
-#&gt;  1 Barnet, Enfield And Haringey Mental Health         0.982     21
-#&gt;  2 Bradford District Care Trust                       0.972      3
-#&gt;  3 Camden And Islington                               0.953     21
-#&gt;  4 Hertfordshire Partnership University               0.953      9
-#&gt;  5 North Essex Partnership University                 0.945     15
-#&gt;  6 Devon Partnership                                  0.945     21
-#&gt;  7 Sussex Partnership                                 0.942     21
-#&gt;  8 Essex Partnership University                       0.942      6
-#&gt;  9 Manchester Mental Health And Social Care Trust     0.940     14
-#&gt; 10 Birmingham And Solihull Mental Health              0.935     21
-#&gt; # ... with 245 more rows
+```
+
+```
+## # A tibble: 255 x 3
+##    org_name                                       mean_pocc number
+##    &lt;chr&gt;                                              &lt;dbl&gt;  &lt;int&gt;
+##  1 Barnet, Enfield And Haringey Mental Health         0.982     21
+##  2 Bradford District Care Trust                       0.972      3
+##  3 Camden And Islington                               0.953     21
+##  4 Hertfordshire Partnership University               0.953      9
+##  5 North Essex Partnership University                 0.945     15
+##  6 Devon Partnership                                  0.945     21
+##  7 Sussex Partnership                                 0.942     21
+##  8 Essex Partnership University                       0.942      6
+##  9 Manchester Mental Health And Social Care Trust     0.940     14
+## 10 Birmingham And Solihull Mental Health              0.935     21
+## # … with 245 more rows
 ```
 
 ---
@@ -917,20 +933,23 @@ beds_data %&gt;%
 *           distinct_number = n_distinct(org_name)) %&gt;%
   filter(distinct_number &gt; 1) %&gt;% 
   arrange(desc(distinct_number))
-#&gt; # A tibble: 22 x 2
-#&gt;    org_code distinct_number
-#&gt;    &lt;chr&gt;              &lt;int&gt;
-#&gt;  1 RDE                    3
-#&gt;  2 RTG                    3
-#&gt;  3 R1K                    2
-#&gt;  4 RA9                    2
-#&gt;  5 RBN                    2
-#&gt;  6 RD1                    2
-#&gt;  7 RD8                    2
-#&gt;  8 RDU                    2
-#&gt;  9 RGM                    2
-#&gt; 10 RGN                    2
-#&gt; # ... with 12 more rows
+```
+
+```
+## # A tibble: 22 x 2
+##    org_code distinct_number
+##    &lt;chr&gt;              &lt;int&gt;
+##  1 RDE                    3
+##  2 RTG                    3
+##  3 R1K                    2
+##  4 RA9                    2
+##  5 RBN                    2
+##  6 RD1                    2
+##  7 RD8                    2
+##  8 RDU                    2
+##  9 RGM                    2
+## 10 RGN                    2
+## # … with 12 more rows
 ```
 
 ---
@@ -1014,9 +1033,7 @@ c("beds", "staff", "patients")
 
 
 ```r
-
 c("Bradford District Care", "Bradford District Care Trust")
-
 ```
 
 &lt;/br&gt; Filter by org_name IN the lookup list.

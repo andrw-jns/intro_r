@@ -4,7 +4,6 @@
     <title>Naming objects</title>
     <meta charset="utf-8" />
     <meta name="author" content="Zoë Turner" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
     <link href="libs/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
@@ -48,20 +47,23 @@ class: title-slide, left, bottom
 beds_data %&gt;% 
   group_by(date) %&gt;% 
   summarise(mean_beds = mean(beds_av, na.rm = TRUE))
-#&gt; # A tibble: 21 x 2
-#&gt;    date       mean_beds
-#&gt;    &lt;date&gt;         &lt;dbl&gt;
-#&gt;  1 2013-09-01      324.
-#&gt;  2 2013-12-01      322.
-#&gt;  3 2014-03-01      319.
-#&gt;  4 2014-06-01      320.
-#&gt;  5 2014-09-01      318.
-#&gt;  6 2014-12-01      315.
-#&gt;  7 2015-03-01      314.
-#&gt;  8 2015-06-01      294.
-#&gt;  9 2015-09-01      296.
-#&gt; 10 2015-12-01      296.
-#&gt; # ... with 11 more rows
+```
+
+```
+## # A tibble: 21 x 2
+##    date       mean_beds
+##    &lt;date&gt;         &lt;dbl&gt;
+##  1 2013-09-01      324.
+##  2 2013-12-01      322.
+##  3 2014-03-01      319.
+##  4 2014-06-01      320.
+##  5 2014-09-01      318.
+##  6 2014-12-01      315.
+##  7 2015-03-01      314.
+##  8 2015-06-01      294.
+##  9 2015-09-01      296.
+## 10 2015-12-01      296.
+## # … with 11 more rows
 ```
 
 &lt;/br&gt; Output = Object = New data frame!
@@ -80,11 +82,9 @@ We can put the output...
 
 
 ```r
-
     beds_data %&gt;%
          group_by(date) %&gt;% 
          summarise(mean_beds = mean(beds_av, na.rm = TRUE)) 
-
 ```
 
 &lt;/br&gt; ... into ggplot2 code...
@@ -97,7 +97,6 @@ ggplot(
 *        summarise(mean_beds = mean(beds_av, na.rm = TRUE))
 ) + 
    geom_point(aes(x = date, y = mean_beds))
-
 ```
 
 ---
@@ -129,7 +128,6 @@ This whole 'chunk' of code can be named
 beds_data %&gt;% 
   group_by(date) %&gt;% 
   summarise(mean_beds = mean(beds_av, na.rm = TRUE))
-
 ```
 
 --
@@ -141,7 +139,6 @@ beds_data %&gt;%
 *beds_ts &lt;- beds_data %&gt;%
   group_by(date) %&gt;% 
   summarise(mean_beds = mean(beds_av, na.rm = TRUE))
-
 ```
 
 ---
@@ -216,7 +213,6 @@ Give your plot a name
 
 ggplot(data = beds_ts) +
      geom_point(aes(x = date, y = mean_beds))
-
 ```
 
 Then run your plot
@@ -232,7 +228,6 @@ Then run your plot
 
 
 ```r
-
 *plot &lt;- ggplot(data = beds_ts) +
      geom_point(aes(x = date, y = mean_beds))
 

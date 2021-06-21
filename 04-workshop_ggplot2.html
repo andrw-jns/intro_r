@@ -4,7 +4,6 @@
     <title>Introduction to ggplot2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Zoë Turner" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.2.6/panelset.js"></script>
@@ -227,10 +226,8 @@ Note that R is case sensitive.
 
 
 ```r
-
 ggplot(data = capacity_ae) +
   geom_point(aes(x = dcubicles, y = dwait))
-
 ```
 
 ---
@@ -402,10 +399,8 @@ Shape/colour/size &lt;svg viewBox="0 0 448 512" style="height:1em;position:relat
 
 
 ```r
-
 ggplot(data = capacity_ae) + 
 * geom_point(aes(x = dcubicles, y = dwait))
-
 ```
 
 ---
@@ -492,10 +487,8 @@ and
 
 
 ```r
-
 ggplot(capacity_ae) + 
 * geom_point(aes(dcubicles, dwait))
-
 ```
 
 
@@ -534,10 +527,8 @@ This is our current plot:
 
 
 ```r
-
 ggplot(data = capacity_ae) + 
   geom_point(aes(x = dcubicles, y = dwait))
-
 ```
 
 &lt;/br&gt; Add a geom_smooth layer (to help identify patterns)
@@ -550,16 +541,14 @@ ggplot(data = capacity_ae) +
 
 
 ```r
-
 ggplot(data = capacity_ae) + 
   geom_point(aes(x = dcubicles, y = dwait)) +
   geom_smooth(aes(x = dcubicles, y = dwait))
-
 ```
 
 ---
 
-&lt;img src="04-workshop_ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="100%" /&gt;
+![](04-workshop_ggplot2_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -577,13 +566,13 @@ ggplot(data = capacity_ae) +
 
 ---
 
-&lt;img src="04-workshop_ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="100%" /&gt;
+![](04-workshop_ggplot2_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
 
 ---
 
 # What is happening here?
 
-&lt;img src="04-workshop_ggplot2_files/figure-html/plot-outliers-1.png" width="100%" /&gt;
+![](04-workshop_ggplot2_files/figure-html/plot-outliers-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -605,7 +594,6 @@ Put an argument **inside** aes() if you want a visual attribute to change with d
 
 
 ```r
-
 ggplot(data = capacity_ae) + 
   geom_point(aes(x = dcubicles, y = dwait, 
 *                colour = staff_increase)) +
